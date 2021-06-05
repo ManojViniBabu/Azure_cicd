@@ -4,7 +4,7 @@
 		"description": "Pipeline to  ingest employee data",
 		"activities": [
 			{
-				"name": "Get Metadata Info",
+				"name": "Get Metadata",
 				"type": "GetMetadata",
 				"dependsOn": [],
 				"policy": {
@@ -38,7 +38,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Get Metadata Info",
+						"activity": "Get Metadata",
 						"dependencyConditions": [
 							"Succeeded"
 						]
