@@ -1,0 +1,53 @@
+{
+	"name": "ds_tgt_employee_data",
+	"properties": {
+		"description": "dataset for  target",
+		"linkedServiceName": {
+			"referenceName": "ls_tgt_sql_db",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "Id",
+				"type": "varchar"
+			},
+			{
+				"name": "FirstName",
+				"type": "varchar"
+			},
+			{
+				"name": "LastName",
+				"type": "varchar"
+			},
+			{
+				"name": "Gender",
+				"type": "varchar"
+			},
+			{
+				"name": "DateofBirth",
+				"type": "date"
+			},
+			{
+				"name": "Employment_status",
+				"type": "varchar"
+			},
+			{
+				"name": "Annual_salary",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Tax_file_no",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "EMP"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

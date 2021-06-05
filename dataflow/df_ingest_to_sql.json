@@ -1,0 +1,32 @@
+{
+	"name": "df_ingest_to_sql",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "ds_src_employee_data",
+						"type": "DatasetReference"
+					},
+					"name": "srcEmployeeData"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ds_tgt_employee_data",
+						"type": "DatasetReference"
+					},
+					"name": "sink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "AlterRow"
+				}
+			],
+			"script": "parameters{\n\tfileName as string\n}\nsource(output(\n\t\tnumber as string,\n\t\tfirst_name as string,\n\t\tlast_name as string,\n\t\tgender as string,\n\t\tbirth_date as date,\n\t\temployment_status as string,\n\t\tannual_salary as integer,\n\t\ttax_file_no as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:[($fileName)]) ~> srcEmployeeData\nsrcEmployeeData alterRow(upsertIf(isNull(number)==false())) ~> AlterRow\nAlterRow sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tId as string,\n\t\tFirstName as string,\n\t\tLastName as string,\n\t\tGender as string,\n\t\tDateofBirth as date,\n\t\tEmployment_status as string,\n\t\tAnnual_salary as integer,\n\t\tTax_file_no as integer\n\t),\n\tdeletable:false,\n\tinsertable:false,\n\tupdateable:false,\n\tupsertable:true,\n\tkeys:['Id'],\n\tformat: 'table',\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tId = number,\n\t\tFirstName = first_name,\n\t\tLastName = last_name,\n\t\tGender = gender,\n\t\tDateofBirth = birth_date,\n\t\tEmployment_status = employment_status,\n\t\tAnnual_salary = annual_salary,\n\t\tTax_file_no = tax_file_no\n\t)) ~> sink"
+		}
+	}
+}

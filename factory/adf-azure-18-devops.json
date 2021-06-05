@@ -1,0 +1,9 @@
+{
+	"name": "adf-azure-18-devops",
+	"location": "centralindia",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "0016139a-ad0c-43e8-8aa8-873818c22056",
+		"tenantId": "27779724-0be7-4905-8c72-b877b7f8ec70"
+	}
+}
