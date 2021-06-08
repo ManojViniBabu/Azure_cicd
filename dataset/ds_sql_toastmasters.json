@@ -9,7 +9,8 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "toastmasters"
+			"schema": "employeedb",
+			"table": "toastmasters"
 		}
 	}
 }
