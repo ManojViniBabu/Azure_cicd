@@ -1,0 +1,12 @@
+{
+	"name": "ds_sql_toastmasters",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_tgt_sql_db",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}

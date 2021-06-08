@@ -1,0 +1,48 @@
+{
+	"name": "ds_toastmasters_dataset",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_src_storage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "toastmasters.csv",
+				"container": "toastmasters"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Club_ID",
+				"type": "String"
+			},
+			{
+				"name": "Club_Name",
+				"type": "String"
+			},
+			{
+				"name": "Club_Status",
+				"type": "String"
+			},
+			{
+				"name": "Member_ID",
+				"type": "String"
+			},
+			{
+				"name": "Paid_Status",
+				"type": "String"
+			},
+			{
+				"name": "EDU",
+				"type": "String"
+			}
+		]
+	}
+}
